@@ -15,4 +15,4 @@ RUN pip install --upgrade pip
 
 RUN pip install --no-cache-dir --upgrade -r /streamlit/requirements.txt
 
-CMD streamlit run app.py
+CMD streamlit run Home.py

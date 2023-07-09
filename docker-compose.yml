@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+
+
+  streamlit:
+    volumes:
+      - ./streamlit/:/streamlit/
+    build:
+      context: ./streamlit
+      dockerfile: Dockerfile
+    container_name: streamlit
+    restart: always
+    ports:
+      - "8000:8501"
+
+      

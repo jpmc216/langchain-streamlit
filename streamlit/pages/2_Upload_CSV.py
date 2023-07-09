@@ -7,8 +7,6 @@ st.set_page_config(layout="wide")
 # Set API keys from session state
 openai_api_key = st.session_state.openai_api_key
 
-st.write(openai_api_key)
-
 # Streamlit app
 st.subheader('Upload CSV')
 #url = st.text_input("Enter CSV file path")
