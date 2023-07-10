@@ -8,20 +8,28 @@ import os
 st.set_page_config(layout="wide")
 
 # Streamlit app
-st.subheader('Train LLM using Langchain')
+st.subheader('Step2: Upload the data file')
 
-if 'df_csv' in st.session_state:
-    df_csv = st.session_state['df_csv']
+data = st.file_uploader("Upload a Dataset", type=["csv", "json"])
+
+col1, col2 = st.columns([1,1])
+
+with col1:
+    preview = st.button('Save and Preview')
+# with col2:
+#     next = st.button('Next')
 
 if 'openai_api_key' in st.session_state:
-    openai_api_key = st.session_state.openai_api_key    
-
-
-if st.button("Train Model"):
+    openai_api_key = st.session_state.openai_api_key  
+        
+if data is not None and preview:
+    df = pd.read_csv(data)
+    st.dataframe(df.head())
+    
     # Validate inputs
     if not openai_api_key:
         st.error("Please provide the missing API keys in Settings.")
-    elif df_csv is None:
+    elif df is None:
         st.error("Please upload the CSV to train the model on")
     else:
         try:
@@ -29,10 +37,10 @@ if st.button("Train Model"):
                 #,agent_type=AgentType.OPENAI_FUNCTIONS,
                 os.environ['OPENAI_API_KEY'] = openai_api_key
                 
-                pd_agent = create_pandas_dataframe_agent(OpenAI(temperature=0), df_csv, verbose=True)
+                pd_agent = create_pandas_dataframe_agent(OpenAI(temperature=0), df, verbose=True)
                 if pd_agent:
                     st.success("Successfully trained the model")
                     st.session_state.pd_agent = pd_agent                    
         except Exception as e:
             st.exception(f"Exception: {e}")
-            
+

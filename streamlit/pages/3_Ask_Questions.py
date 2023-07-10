@@ -4,6 +4,8 @@ from streamlit_chat import message
 
 st.set_page_config(layout="wide")
 
+st.subheader('Step3: Analyze data by asking questions')
+
 # Get agent from session state
 if 'pd_agent' in st.session_state:
     pd_agent = st.session_state.pd_agent
@@ -34,7 +36,7 @@ if 'past' not in st.session_state:
  
 
 with st.form('form', clear_on_submit=True):
-    user_input = st.text_input('You: ', '', key='input')
+    user_input = st.text_input('Type your question here: ', '', key='input')
     submitted = st.form_submit_button('Send')
  
 if submitted and user_input:
