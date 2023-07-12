@@ -10,7 +10,7 @@ st.set_page_config(layout="wide")
 # Streamlit app
 st.subheader('Step2: Upload the data file')
 
-data = st.file_uploader("Upload a Dataset", type=["csv", "json"])
+data = st.file_uploader("Upload a Dataset", type=["csv"])
 
 col1, col2 = st.columns([1,1])
 

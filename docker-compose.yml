@@ -12,6 +12,6 @@ services:
     container_name: streamlit
     restart: always
     ports:
-      - "8000:8501"
+      - "8501:8501"
 
       
