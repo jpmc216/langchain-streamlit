@@ -1,4 +1,5 @@
 import streamlit as st
+import openai
 
 from streamlit_extras.switch_page_button import switch_page
 
@@ -30,8 +31,20 @@ with col1:
 if save:
     if not openai_api_key.strip():
         st.error("Please provide the missing API keys.")
+
+    openai.api_key = openai_api_key
+    try:
+        models = openai.Model.list()["data"]
+        model_ids = [model['id'] for model in models]
+    except Exception as e:
+        print('Exception')
+        model_ids = []
+
+    if len(model_ids) < 1:
+        st.error("Open AI Key provided does not work")
     else:
         st.session_state.openai_api_key = openai_api_key
+        st.success("Open AI Key validated and saved")
         
 #next_page = st.button("Next")
 # if next:

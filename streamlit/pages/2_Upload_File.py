@@ -39,7 +39,7 @@ if data is not None and preview:
                 
                 pd_agent = create_pandas_dataframe_agent(OpenAI(temperature=0), df, verbose=True)
                 if pd_agent:
-                    st.success("Successfully trained the model")
+                    st.success("Successfully trained the agent")
                     st.session_state.pd_agent = pd_agent                    
         except Exception as e:
             st.exception(f"Exception: {e}")
