@@ -1,7 +1,7 @@
 streamlit==1.24.0
 streamlit-extras==0.2.7
 streamlit-chat==0.1.1
-langchain==0.0.230
+langchain==0.0.236
 openai==0.27.8
 tiktoken==0.4.0
 unstructured==0.7.12
