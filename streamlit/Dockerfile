@@ -1,5 +1,5 @@
 
-FROM python:3.11-slim-bullseye
+FROM python:3.12.7-slim-bullseye
 
 WORKDIR /streamlit
 ENV PYTHONDONTWRITEBYTECODE 1
